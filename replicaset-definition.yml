@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: database
+  labels:
+    app: postmortem
+    tier: database
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: database
+  template:
+    metadata:
+      labels:
+        tier: database
+    spec:
+      containers: 
+        - name: db-container
+          image: mongo
